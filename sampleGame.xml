@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Author Hillsoft -->
+<root>
+    <state id="0">
+        <text>You have reached the win state!</text>
+    </state>
+    <state id="1">
+        <text>This is the starting state.</text>
+        <decision nState="2">go to state 2.</decision>
+        <decision nState="3">go to state 3.</decision>
+    </state>
+    <state id="2">
+        <text>This is state 2.</text>
+        <decision nState="3">go to state 3.</decision>
+        <decision nState="4">go to state 4.</decision>
+    </state>
+    <state id="3">
+        <text>This is state 3.</text>
+        <decision nState="4">go to state 4.</decision>
+        <decision nState="1">go to state 1.</decision>
+    </state>
+    <state id="4">
+        <text>This is state 4.</text>
+        <decision nState="1">go to state 1.</decision>
+        <decision nState="0">win.</decision>
+    </state>
+</root>

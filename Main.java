@@ -1,6 +1,10 @@
 package textbasedengine;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.stream.XMLStreamException;
 
 /**
  * The main class, launches the application
@@ -16,15 +20,24 @@ public class Main
      */
     public static void main(String[] args)
     {
-        GameState[] states = new GameState[5];
+        System.out.print("Enter the name of the game you want to play: ");
         
-        states[0] = new GameState("You have reached the end state.", null);
-        states[1] = new GameState("This is the starting state.", new StateDecision[] { new StateDecision(2, "go to state 2"), new StateDecision(3, "go to state 3") });
-        states[2] = new GameState("This is state 2.", new StateDecision[] { new StateDecision(2, "go to state 2."), new StateDecision(3, "go to state 3.") });
-        states[3] = new GameState("This is state 3.", new StateDecision[] { new StateDecision(3, "go to state 3."), new StateDecision(4, "go to state 4.") });
-        states[4] = new GameState("This is state 4.", new StateDecision[] { new StateDecision(2, "go to state 2."), new StateDecision(0, "win.") });
+        GameManager g = null;
+        try
+        {
+            g = GameManager.loadFromFile(Main.getInput() + ".xml");
+        }
+        catch (FileNotFoundException ex)
+        {
+            System.err.println("Could not load file");
+            System.exit(400);
+        }
+        catch (XMLStreamException ex)
+        {
+            System.err.println("XML is invalid");
+            System.exit(400);
+        }
         
-        GameManager g = new GameManager(states);
         g.playGame();
     }
     

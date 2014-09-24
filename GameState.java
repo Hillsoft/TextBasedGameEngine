@@ -21,13 +21,40 @@ public class GameState
     }
     
     /**
+     * Creates a blank game state
+     */
+    public GameState()
+    {
+        textPrompt = "";
+        decisions = null;
+    }
+    
+    /**
+     * Updates the states prompt
+     * @param newPrompt The new prompt to be displayed
+     */
+    public void setPrompt(String newPrompt)
+    {
+        textPrompt = newPrompt;
+    }
+    
+    /**
+     * Updates the states available decisions
+     * @param newDecisions The new set of available decisions
+     */
+    public void setDecisions(StateDecision[] newDecisions)
+    {
+        decisions = newDecisions;
+    }
+    
+    /**
      * Plays this particular game state for the user to respond to
      * @param endState Whether or not this is the game's win state
      * @return The id of the next state to be played
      */
     public int play(boolean endState)
     {
-        System.out.println(textPrompt);
+        System.out.println("\n" + textPrompt);
         
         int nextState = Integer.MIN_VALUE;
         

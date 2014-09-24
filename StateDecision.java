@@ -21,6 +21,33 @@ public class StateDecision
     }
     
     /**
+     * Creates a blank decision
+     */
+    public StateDecision()
+    {
+        nextState = -1;
+        prompt = "";
+    }
+    
+    /**
+     * Updates the decisions target
+     * @param newNState The new state led to by this decision
+     */
+    public void updateNextState(int newNState)
+    {
+        nextState = newNState;
+    }
+    
+    /**
+     * Updates the prompt this decision displays to the user
+     * @param newPrompt The new prompt
+     */
+    public void updatePrompt(String newPrompt)
+    {
+        prompt = newPrompt;
+    }
+    
+    /**
      * Displays the decision to the player, does not deal with input
      * @param key The readable name of the key the user uses to select this decision
      */
