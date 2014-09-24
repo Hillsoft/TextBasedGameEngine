@@ -127,7 +127,13 @@ public class GameManager
                 if (endElement.getName().getLocalPart().equals(STATE))
                 {
                     state.setDecisions(decisions.toArray(new StateDecision[decisions.size()]));
-                    states.add(curId, state);
+                    
+                    while (states.size() <= curId)
+                    {
+                        states.add(null);
+                    }
+                    
+                    states.set(curId, state);
                 }
             }
         }
